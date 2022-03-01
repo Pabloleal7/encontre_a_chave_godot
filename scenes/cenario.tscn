@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/cenario.png" type="Texture" id=1]
+[ext_resource path="res://scenes/porta.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/chave.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/teto.png" type="Texture" id=5]
+
+[node name="cenario" type="Node2D"]
+
+[node name="textura_cenario" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="porta" parent="." instance=ExtResource( 2 )]
+
+[node name="porta2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 129, 354 )
+
+[node name="chave" parent="." instance=ExtResource( 3 )]
+position = Vector2( 178, 589 )
+
+[node name="player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 461, 400 )
+vel = 1000
+
+[node name="paredes" type="StaticBody2D" parent="."]
+z_index = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="paredes"]
+position = Vector2( 204, 1 )
+polygon = PoolVector2Array( 281, 656, 0, 655, -3, 611, -101, 611, -106, 560, -143, 559, -144, 370, -95, 372, -97, 224, -143, 222, -144, 79, -97, 81, -97, 31, -53, 31, -52, 79, -1, 84, -5, 224, -52, 226, -53, 369, 285, 374, 283, 714, 340, 716, 335, -12, -206, -4, -205, 721, 283, 716 )
+
+[node name="teto" type="Sprite" parent="."]
+position = Vector2( 135, 283 )
+z_index = 1
+texture = ExtResource( 5 )
